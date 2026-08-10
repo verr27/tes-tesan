@@ -1,0 +1,284 @@
+/* ===== ROOT WARNA ===== */
+:root {
+  --bg: #2196F3;
+  --card: #FFFFFF;
+  --text: #1a1a1a;
+  --primary: #0d47a1;
+  --toast-bg: #1565c0;
+  --toast-text: #FFFFFF;
+}
+
+/* ===== DARK MODE ===== */
+body.dark {
+  --bg: #0d1b2a;
+  --card: #1b263b;
+  --text: #fff;
+  --primary: #2196f3;
+  --toast-bg: #1565c0;
+  --toast-text: #fff;
+}
+
+/* ===== BODY ===== */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  letter-spacing: 0.3px;
+
+  transition:
+    background 0.4s ease,
+    color 0.4s ease;
+}
+
+/* ===== CONTAINER ===== */
+.container {
+  width: 100%;
+  max-width: 400px;
+  padding: 10px;
+}
+
+/* ===== HEADER ===== */
+.header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header h2 {
+  margin: 0;
+  text-align: center;
+}
+.header button {
+  position: absolute;
+  right: 0;
+}
+
+/* ===== CARD ===== */
+.card {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(15px);
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+
+  transition: background 0.4s ease;
+}
+
+body.dark .card {
+  background: rgba(44, 44, 62, 0.6);
+}
+
+/* ===== INPUT & BUTTON ===== */
+input,
+button {
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  margin-top: 8px;
+}
+
+input {
+  width: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  font-family: inherit;
+}
+
+input:focus {
+  outline: none;
+  border: 1px solid var(--primary);
+}
+
+button {
+  background: var(--primary);
+  cursor: pointer;
+}
+
+button:hover {
+  transform: translateY(-1px);
+  opacity: 0.9;
+}
+
+/* ===== FILTER ===== */
+.filters {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.filters button {
+  flex: 1;
+  margin: 2px;
+}
+
+/* ===== TASK LIST ===== */
+.task {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 12px;
+  margin-top: 10px;
+  border-radius: 12px;
+
+  background: rgba(0, 0, 0, 0.05);
+  backdrop-filter: none;
+
+  color: var(--text);
+
+  transition: 0.2s;
+}
+
+/* DARK TASK */
+body.dark .task {
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+}
+
+/* HOVER */
+.task:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.35);
+}
+
+/* DONE TASK */
+.task.done {
+  text-decoration: line-through;
+  opacity: 0.8;
+}
+
+/* OVERDUE TASK */
+.task.overdue {
+  background: rgba(255, 0, 0, 0.2);
+  border: 1px solid red;
+}
+
+.task.overdue small {
+  color: red;
+  font-weight: bold;
+}
+
+/* CHECKBOX */
+input[type='checkbox'] {
+  transform: scale(1.2);
+  cursor: pointer;
+}
+
+/* ===== PROGRESS BAR ===== */
+.progress-container {
+  width: 100%;
+  height: 14px;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  overflow: hidden;
+  margin: 10px;
+}
+
+body.dark .progress-container {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+#progressBar {
+  background: linear-gradient(90deg, #9ca3af, #6b7280);
+}
+
+#progressText {
+  font-size: 13px;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+/* ===== TEXT KECIL ===== */
+small {
+  display: block;
+  font-size: 12px;
+  opacity: 0.6;
+}
+
+/* ===== ANIMASI TASK ===== */
+.task {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeIn 0.3s ease forwards;
+}
+
+.task.removing {
+  animation: fadeOut 0.3s ease forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
+
+/* ===== DARK MODE ANIMATION ===== */
+body.dark {
+  animation: darkFade 0.4s ease;
+}
+
+@keyframes darkFade {
+  from {
+    opacity: 0.7;
+    transform: scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ===== CUSTOM TOAST NOTIFICATION ===== */
+.toast-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 320px;
+  width: calc(100% - 40px);
+}
+
+.toast {
+  background: var(--toast-bg);
+  color: var(--toast-text);
+  padding: 12px 18px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  font-size: 13.5px;
+  border-left: 5px solid var(--primary);
+
+  opacity: 0;
+  transform: translateX(50px);
+  animation: toastIn 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+}
+
+.toast.hide {
+  opacity: 0;
+  transform: translateY(-20px);
+}
+
+@keyframes toastIn {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
